@@ -1,0 +1,16 @@
+%p I like to watch TED talks in my spare time. When I do I often find really inspiring or entertaining ones which I immediately mark as my favorites. I was not able to find a podcast feed on TED's site for my favorite talks though so I created this utility, which generates a TED Favorites feed for any given TED user profile.
+
+%h3 Usage:
+
+%p Sign in on <a href="http://www.ted.com">ted.com</a>, click on "My Profile" in the upper right corner, copy the last number part in the url into this field, and click on the link below.
+
+%p
+  Enter your TED profile id:
+  %input(type="text" id="profile_id")
+
+.feed-link
+  %strong Feed link:
+  %a(id="feed-link" href="")
+
+%p
+  %small There are still some rough edges, this was just a one hour project. For one, there is no error handling, so try to enter the correct profile id.

@@ -1,0 +1,33 @@
+!!! XML
+<?xml-stylesheet href="http://feeds.feedburner.com/~d/styles/rss2enclosuresfull.xsl" type="text/xsl" media="screen"?>
+<?xml-stylesheet href="http://feeds.feedburner.com/~d/styles/itemcontent.css" type="text/css" media="screen"?>
+%rss{:version => "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "xmlns:media" => "http://search.yahoo.com/mrss/", "xmlns:feedburner" => "http://rssnamespace.org/feedburner/ext/1.0"}
+  %channel
+    %lastbuilddate= @latest_pubdate.strftime("%c")
+    %title= "#{@profile_name}'s favorite TEDTalks"
+    %link= @favs_uri
+    %generator TED - TED.com
+    - description = "Each year, the TED (Technology, Entertainment, Design) conference hosts some of the world's most fascinating people: Trusted voices and convention-breaking mavericks, icons and geniuses. These podcasts (also available in audio format) capture the most extraordinary presentations delivered from the TED stage marked as favorite by #{@profile_name}."
+    %description= description
+    %itunes:subtitle Ideas worth spreading from the TED Conference
+    %itunes:summary= description
+    %language en
+    %copyright Creative Commons: http://creativecommons.org/licenses/by-nc-nd/2.5/
+    %itunes:owner
+      %itunes:name Michael Glass
+      %itunes:email contact@ted.com
+    %image
+      %url http://ted.streamguys.net/TEDTalksvideo_tile_144.jpg
+      %title TEDTalks (video)
+      %link http://www.ted.com/talks/browse
+      %width 144
+      %height 144
+    %itunes:image(href="http://video.ted.com/assets/images/itunes/podcast_poster_600x600.jpg")
+    %category Higher Education
+    %itunes:category(text="Education")
+      %itunes:category(text="Higher Education")
+    %itunes:keywords TED
+    %itunes:explicit no
+    %media:rating(scheme="urn:simple") nonadult
+    - @talks.each do |talk|
+      = talk.to_xml
